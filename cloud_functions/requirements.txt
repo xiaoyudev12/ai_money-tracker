@@ -1,3 +1,4 @@
-fastapi
-pydantic
-openai
+fastapi==0.115.6
+pydantic==2.9.2
+openai==1.58.1
+sqlalchemy==2.0.36
