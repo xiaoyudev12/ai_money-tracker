@@ -7,7 +7,7 @@ user_input=st.text_input("请输入你的消费记录",placeholder="例如:打�
 if st.button("开始记账"):
     if user_input:
         with st.spinner("AI正在分析并记账..."):
-            res=requests.post(f"{url}/api/text",json={"text":user_input})
+            res=requests.post(f"{url}/text",json={"text":user_input})
             if res.status_code==200:
                 st.success("记账成功")
                 st.rerun()
@@ -17,7 +17,7 @@ if st.button("开始记账"):
         st.warning("请输入消费记录!")
 st.divider()
 st.subheader("消费统计")
-analysis_res=requests.get(f"{url}/api/analysis")
+analysis_res=requests.get(f"{url}/analysis")
 if analysis_res.status_code==200:
     data=analysis_res.json()
     st.metric(label="总支出(元)",value=data["总金额"])

@@ -16,7 +16,7 @@ mock_records = []
 class RecordRequest(BaseModel):
     text: str
 
-@app.post("/api/text")
+@app.post("/text")
 async def api_text(boot: RecordRequest):
     prompt = f"""
     你现在是一名智能消费分析师。
@@ -43,7 +43,7 @@ async def api_text(boot: RecordRequest):
         mock_records.append(i)
     return {"message": "记账成功", "data": ai_text}
 
-@app.get("/api/analysis")
+@app.get("/analysis")
 async def api_analysis():
     if not mock_records:
         raise HTTPException(status_code=400, detail="当前暂无账单")
